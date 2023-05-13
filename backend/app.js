@@ -1,0 +1,40 @@
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var requestRouter = require('./routes/requests');
+var addressRouter = require('./routes/address');
+
+var app = express();
+
+var port = process.env.PORT || 3000;
+var HOST_NAME = 'localhost';
+var DATABASE_NAME = 'todo';
+
+mongoose.connect("mongodb://localhost/todo", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use('/api', [requestRouter, addressRouter]);
+
+app.get("/", (req, res) => {
+    res.send('Welcome to localhost 3000')
+});
+
+//listen on port 3000
+app.listen(port, (error) => {
+    if (error) {
+        console.log("Issue in connecting to the server");
+    }
+    else {
+        console.log("Successfully connected to the server");
+    }
+});
