@@ -3,6 +3,7 @@
 To run backend
 
 navigated to backend folder
-npm install
 
-npm start
+  npm install
+
+  npm start
