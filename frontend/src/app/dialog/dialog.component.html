@@ -1,0 +1,19 @@
+<div>
+  <div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <span>{{message.title}}</span>
+    <i class="icon-close cursor-pointer" (click)="onClose()"></i>
+  </div>
+  <mat-dialog-content>
+    <p>{{message.description}}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+      <a mat-button class="first-letter-capitalize" (click)="onClose()">
+        No
+      </a>
+      <button mat-flat-button color="primary" class="first-letter-capitalize" (click)="onProceed()">
+        Yes
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

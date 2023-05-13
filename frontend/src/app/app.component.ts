@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from './services/app.service';
 @Component({
   selector: 'app-root',
@@ -18,7 +19,10 @@ export class AppComponent implements OnInit {
   filteredOptions: any;
 
   constructor(
-    private appService: AppService
+    private appService: AppService,
+    public dialog: MatDialog,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
 
   }
@@ -31,6 +35,12 @@ export class AppComponent implements OnInit {
       startWith(''),
       map(value => this.filterx(value))
     );
+  }
+
+  openDialog(): void {
+    this.dialog.open(DialogAnimationsExampleDialog, {
+      width: '250px'
+    });
   }
 
 
@@ -48,6 +58,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+  redirect() {
+    this.router.navigateByUrl('/address');
+  }
+
   filterx(value: string): string[] {
     const filterValue = value.toLowerCase();
 
@@ -60,4 +74,14 @@ export class AppComponent implements OnInit {
     }) : [];
   }
 }
+
+@Component({
+  selector: 'dialog-animations-example-dialog',
+  templateUrl: 'dialog-animations-example-dialog.html',
+})
+export class DialogAnimationsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) { }
+}
+
+
 

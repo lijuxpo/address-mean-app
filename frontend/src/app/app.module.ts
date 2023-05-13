@@ -15,11 +15,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppService } from './services/app.service';
+import { AddressComponent } from './address/address.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { DialogComponent } from './dialog/dialog.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddressComponent,
+    HomeComponent,
+    HeaderComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +45,9 @@ import { AppService } from './services/app.service';
     MatButtonModule,
     MatToolbarModule,
     MatDividerModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule
   ],

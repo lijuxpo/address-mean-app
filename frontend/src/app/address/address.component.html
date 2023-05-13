@@ -1,0 +1,54 @@
+<form [formGroup]="addressForm">
+  <div class="create-form" cdkScrollable>
+    <div fxLayoutAlign="center center" class="margin-top-10">
+      <mat-card fxFlex="50%" fxFlex.lt-md="100%">
+        <div fxLayout="column" fxLayoutGap="4%">
+          <div>
+            <h2 fxFlex="90%" class="text-capitalize margin-left-15">{{addressId ? 'Edit' :'New'}} Address</h2>
+            <button *ngIf="addressId" fxFlex="10%" style="float:right" mat-icon-button aria-label="Delete"
+              (click)="delete(addressId)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <!-- address -->
+          <mat-form-field appearance="outline">
+            <mat-label class="text-capitalize">AID</mat-label>
+            <input type="number" matInput maxlength="50" formControlName="AID" required>
+            <mat-error>Enter AID</mat-error>
+          </mat-form-field>
+          <!-- address -->
+          <mat-form-field appearance="outline">
+            <mat-label class="text-capitalize">Address</mat-label>
+            <input type="text" matInput maxlength="50" formControlName="Address" required>
+            <mat-error>Enter address</mat-error>
+          </mat-form-field>
+
+          <!-- suburb -->
+          <mat-form-field appearance="outline">
+            <mat-label class="text-capitalize">Suburb</mat-label>
+            <input type="text" matInput maxlength="50" formControlName="Suburb" required>
+            <mat-error>Enter suburb</mat-error>
+          </mat-form-field>
+
+          <!-- postcode -->
+          <mat-form-field appearance="outline">
+            <mat-label class="text-capitalize">postcode</mat-label>
+            <input type="number" matInput maxlength="50" formControlName="Postcode" required>
+            <mat-error>Enter postcode</mat-error>
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end end" class="footer-position padding-15">
+            <a mat-flat-button class="text-capitalize-first" [routerLink]="['/']">Cancel</a>
+            <div fxLayout="row" fxLayoutGap="15px">
+              <button mat-flat-button color="primary" class="text-capitalize-first" [disabled]="addressForm.invalid"
+                (click)="onSave()">Publish
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+
+
+</form>

@@ -1,0 +1,74 @@
+<div fxLayoutAlign="center center" class="margin-top-10">
+  <div fxFlex="50%" fxFlex.lt-md="100%">
+    <div fxLayout="column" fxLayoutGap="4%">
+      <h2 class="text-center">Search Address</h2>
+      <form class="example-form">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Address</mat-label>
+          <input type="text" placeholder="Search" aria-label="Address" matInput [formControl]="search"
+            [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.Address"
+              (click)="filterValue(option)">
+              <div>
+                <button mat-icon-button aria-label="Location pin">
+                  <mat-icon>location_pin</mat-icon>
+                </button>
+                <span>{{option.Address}}, {{option.Suburb}}, {{option.Postcode}}</span>
+              </div>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+
+      <mat-card fxLayoutAlign="start center" class="example-card" *ngIf="details">
+        <div fxFlex.lt-md="100%">
+          <mat-card-header>
+            <div mat-card-avatar>
+              <button mat-icon-button aria-label="Location pin">
+                <mat-icon>location_pin</mat-icon>
+              </button>
+            </div>
+            <mat-card-title>{{details.address[0].Address}}, {{details.address[0].Suburb}}</mat-card-title>
+            <mat-card-subtitle>{{details.address[0].Postcode}}</mat-card-subtitle>
+            <section>
+              <p>
+                SN: {{details.SN}}
+              </p>
+              <p>
+                Sold Date: {{details.Sold_Date}}
+              </p>
+              <p>
+                Directly Sold: {{details.Directly_Sold}}
+              </p>
+              <p>
+                Active: {{details.Active}}
+              </p>
+            </section>
+          </mat-card-header>
+          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+          <mat-card-content>
+
+
+            <!-- <mat-divider></mat-divider> -->
+            <section>
+              <h3 class="text-bold">Piano Details</h3>
+              <p>
+                Brand: {{details.pianos[0].Brand}}
+              </p>
+              <p>
+                Model: {{details.pianos[0].Model}}
+              </p>
+              <p>
+                Type: {{details.pianos[0].Type}}
+              </p>
+            </section>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="redirect(details.address[0]._id)">EDIT</button>
+          </mat-card-actions>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

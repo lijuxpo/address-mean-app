@@ -7,8 +7,6 @@ var addressRouter = require('./routes/address');
 var app = express();
 
 var port = process.env.PORT || 3000;
-var HOST_NAME = 'localhost';
-var DATABASE_NAME = 'todo';
 
 mongoose.connect("mongodb://localhost/todo", {
     useNewUrlParser: true,
@@ -37,4 +35,4 @@ app.listen(port, (error) => {
     else {
         console.log("Successfully connected to the server");
     }
-});
+})
