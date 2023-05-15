@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     const filterValue = value ? value.toLowerCase() : '';
     return filterValue ? this.results.filter((option: any) => {
       if (option.Address && option.Suburb && option.Postcode) {
-        if (option.Address.includes(filterValue) || option.Suburb.includes(filterValue) || String(option.Postcode).includes(filterValue)) {
+        if (option.Address.toLowerCase().includes(filterValue) || option.Suburb.toLowerCase().includes(filterValue) || String(option.Postcode).includes(filterValue)) {
           return option;
         }
       }
